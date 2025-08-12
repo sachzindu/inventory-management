@@ -1,40 +1,28 @@
-package com.example.InventoryManagement.entity;
+package com.example.InventoryManagement.dto;
 
 import com.example.InventoryManagement.enums.TransactionStatus;
 import com.example.InventoryManagement.enums.TransactionType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
-@Entity
-public class Transaction {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class TransactionDTO {
     private long id;
     private Integer totalProducts;
     private BigDecimal totalPrice;
-    @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
-    @Enumerated(EnumType.STRING)
     private TransactionStatus status;
     private String description;
-    private final LocalDateTime createdAt=LocalDateTime.now();
     private LocalDateTime updatedAt;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    private UserDTO user;
+    private ProductDTO product;
+    private SupplierDTO supplierDTO;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "supplier_id")
-    private Supplier supplier;
-
-    public Transaction(long id, Integer totalProducts, BigDecimal totalPrice, TransactionType transactionType, TransactionStatus status, String description, LocalDateTime updatedAt, User user, Product product, Supplier supplier) {
+    public TransactionDTO(long id, Integer totalProducts, BigDecimal totalPrice, TransactionType transactionType, TransactionStatus status, String description, LocalDateTime updatedAt, UserDTO user, ProductDTO product, SupplierDTO supplierDTO) {
         this.id = id;
         this.totalProducts = totalProducts;
         this.totalPrice = totalPrice;
@@ -44,10 +32,10 @@ public class Transaction {
         this.updatedAt = updatedAt;
         this.user = user;
         this.product = product;
-        this.supplier = supplier;
+        this.supplierDTO = supplierDTO;
     }
 
-    public Transaction() {
+    public TransactionDTO() {
     }
 
     public long getId() {
@@ -98,10 +86,6 @@ public class Transaction {
         this.description = description;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
@@ -110,41 +94,27 @@ public class Transaction {
         this.updatedAt = updatedAt;
     }
 
-    public User getUser() {
+    public UserDTO getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
     }
 
-    public Product getProduct() {
+    public ProductDTO getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(ProductDTO product) {
         this.product = product;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public SupplierDTO getSupplierDTO() {
+        return supplierDTO;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
-    }
-
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "id=" + id +
-                ", totalProducts=" + totalProducts +
-                ", totalPrice=" + totalPrice +
-                ", transactionType=" + transactionType +
-                ", status=" + status +
-                ", description='" + description + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+    public void setSupplierDTO(SupplierDTO supplierDTO) {
+        this.supplierDTO = supplierDTO;
     }
 }
