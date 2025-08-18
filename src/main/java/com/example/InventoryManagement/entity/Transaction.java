@@ -3,11 +3,13 @@ package com.example.InventoryManagement.entity;
 import com.example.InventoryManagement.enums.TransactionStatus;
 import com.example.InventoryManagement.enums.TransactionType;
 import jakarta.persistence.*;
+import lombok.Builder;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
+@Builder
 public class Transaction {
 
     @Id

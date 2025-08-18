@@ -18,7 +18,6 @@ public interface TransactionRepository extends JpaRepository<Transaction,Long> {
             "LEFT JOIN t.product p " +
             "WHERE (:searchText IS NULL OR " +
             "LOWER(t.description) LIKE LOWER(CONCAT('%', :searchText, '%')) OR " +
-            "LOWER(t.note) LIKE LOWER(CONCAT('%', :searchText, '%')) OR " +
             "LOWER(t.status) LIKE LOWER(CONCAT('%', :searchText, '%')) OR " +
             "LOWER(p.name) LIKE LOWER(CONCAT('%', :searchText, '%')) OR " +
             "LOWER(p.sku) LIKE LOWER(CONCAT('%', :searchText, '%')))")

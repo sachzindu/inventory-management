@@ -3,12 +3,14 @@ package com.example.InventoryManagement.entity;
 import com.example.InventoryManagement.enums.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name="users")
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +26,7 @@ public class User {
     private String phoneNumber;
     @Enumerated(EnumType.STRING)
     private UserRole role;
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     private List<Transaction> transactions;
     private final LocalDateTime createdAt=LocalDateTime.now();
 

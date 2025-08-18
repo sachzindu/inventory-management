@@ -2,11 +2,12 @@ package com.example.InventoryManagement.dto;
 
 import com.example.InventoryManagement.entity.Transaction;
 import com.example.InventoryManagement.enums.UserRole;
+import lombok.Builder;
 import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Builder
 public class Response {
     //generic
     private int status;

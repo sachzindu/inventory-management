@@ -2,11 +2,13 @@ package com.example.InventoryManagement.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 
 import java.util.List;
 
 @Entity
 @Table(name="categories")
+@Builder
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

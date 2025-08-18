@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
-import jdk.jfr.Category;
+import lombok.Builder;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "products")
+@Builder
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +33,7 @@ public class Product {
     private LocalDateTime expiryDate;
     private final LocalDateTime createdAt=LocalDateTime.now();
     private LocalDateTime updatedAt;
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "Category_id")
     @ManyToOne
     private Category category;
 
