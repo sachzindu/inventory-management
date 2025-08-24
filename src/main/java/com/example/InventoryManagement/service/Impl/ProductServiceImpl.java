@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
     public Response saveProduct(ProductDTO productDTO, MultipartFile imageFile)
 
     {
-        Category category=categoryRepository.findById(productDTO.getProductId()).orElseThrow(()->new NotFoundException("Category not found of product"));
+        Category category=categoryRepository.findById(productDTO.getCategoryId()).orElseThrow(()->new NotFoundException("Category not found of product"));
         Product productToSave=Product.builder()
                 .name(productDTO.getName())
                 .sku(productDTO.getSku())
@@ -102,7 +102,7 @@ public class ProductServiceImpl implements ProductService {
         }
 
         if(productDTO.getCategoryId()!=null &&productDTO.getCategoryId()>0){
-            Category category=categoryRepository.findById(productDTO.getProductId()).orElseThrow(()->new NotFoundException("Category not found of product"));
+            Category category=categoryRepository.findById(productDTO.getCategoryId()).orElseThrow(()->new NotFoundException("Category not found of product"));
             existingProduct.setCategory(category);
 
         }
