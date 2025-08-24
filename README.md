@@ -11,7 +11,7 @@ This project offers a system to manage and track inventory items via a user-frie
 - Add, update, and remove inventory products
 - View product lists and details
 - Upload and manage product images
-- Role-based access (admin vs. manager) *(adjust if not applicable)*
+- Role-based access (admin vs. manager) 
 - RESTful APIs for backend consumption
 
 ---
