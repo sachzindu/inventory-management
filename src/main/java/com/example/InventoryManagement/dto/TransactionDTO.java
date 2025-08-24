@@ -22,7 +22,17 @@ public class TransactionDTO {
     private ProductDTO product;
     private SupplierDTO supplierDTO;
 
-    public TransactionDTO(long id, Integer totalProducts, BigDecimal totalPrice, TransactionType transactionType, TransactionStatus status, String description, LocalDateTime updatedAt, UserDTO user, ProductDTO product, SupplierDTO supplierDTO) {
+    private  LocalDateTime createdAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public TransactionDTO(long id, Integer totalProducts, BigDecimal totalPrice, TransactionType transactionType, TransactionStatus status, String description, LocalDateTime updatedAt, UserDTO user, ProductDTO product, SupplierDTO supplierDTO, LocalDateTime createdAt) {
         this.id = id;
         this.totalProducts = totalProducts;
         this.totalPrice = totalPrice;
@@ -33,6 +43,7 @@ public class TransactionDTO {
         this.user = user;
         this.product = product;
         this.supplierDTO = supplierDTO;
+        this.createdAt=createdAt;
     }
 
     public TransactionDTO() {

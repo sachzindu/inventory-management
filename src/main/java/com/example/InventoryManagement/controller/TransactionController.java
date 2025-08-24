@@ -60,6 +60,7 @@ public class TransactionController {
     public ResponseEntity<Response> updateTransactionStatus(
             @PathVariable Long transactionId,
             @RequestBody TransactionStatus status) {
+        System.out.println(status);
 
         return ResponseEntity.ok(transactionService.UpdateTransactionStatus(transactionId, status));
     }
