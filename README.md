@@ -23,4 +23,4 @@ This project offers a system to manage and track inventory items via a user-frie
 | Backend      | Java, Spring with springboot        |
 | Frontend     | JavaScript (React) |
 | Build System | Maven |
-| Image Handling | Product image support |
+| Image Handling | - |
